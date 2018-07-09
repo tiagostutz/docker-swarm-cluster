@@ -9,8 +9,9 @@ services:
       - LETS_ENCRYPT_EMAIL=your@email.com
       - SWARM_MODE=true    
     ports:
-      - "80:80"     # The HTTP port
-      - "3030:8080" # The Web UI (enabled by --api)
+      - 80:80     # The HTTP port
+      - 443:443   # The HTTPS port
+      - 3030:8080 # The Web UI (enabled by --api)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
     networks:
