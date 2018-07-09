@@ -4,13 +4,11 @@ services:
   gitlab-runner1:
     image: flaviostutz/gitlab-runner
     environment:
-      - GITLAB_URL=http://gitlab/
-      - REGISTRATION_TOKEN=jPhhnDq7aRygyrMRzJ9e
-      - DESCRIPTION=Runner1
+      - GITLAB_URL=http://gitlab.com/
+      - REGISTRATION_TOKEN=[GITLAB_TOKEN]
+      - NAME=Runner name with space
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - gitlab-runner1-etc:/etc/gitlab-runner
-      - gitlab-runner1-home:/home/gitlab-runner
     deploy:
       labels:
         traefik.frontend.rule: Host:gitlab-runner1.${CLUSTER_DOMAIN}
@@ -52,8 +50,6 @@ networks:
     external: true
 
 volumes:
-  gitlab-runner1-etc:
-  gitlab-runner1-home:
   gitlab_etc:
   gitlab_opt:
   gitlab_log:
